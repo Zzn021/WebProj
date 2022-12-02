@@ -2,11 +2,11 @@ package main.java;
 
 import java.util.List;
 
-import main.java.area.Area;
 import main.java.area.EquipmentArea;
 import main.java.area.EventArea;
 import main.java.area.HandCardArea;
 import main.java.area.RetinueArea;
+
 
 public class Hero extends Entity {
     public enum Camp {
@@ -27,4 +27,10 @@ public class Hero extends Entity {
     private RetinueArea retinues;
 
 
+    public Hero(int id, String name, Camp camp, int maxHealth) {
+        super(id, name);
+        this.camp = camp;
+        this.maxHealth = maxHealth;
+        this.health = maxHealth;
+    }
 }

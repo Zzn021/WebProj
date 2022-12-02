@@ -9,4 +9,8 @@ public abstract class Card extends Entity {
         return description;
     }
 
+    public Card(int id, String name) {
+        super(id, name);
+    }
+
 }
