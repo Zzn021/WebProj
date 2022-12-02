@@ -9,4 +9,5 @@ public abstract class EventCard extends Card {
         //TODO Auto-generated constructor stub
     }
     
+    
 }

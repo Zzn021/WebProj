@@ -13,4 +13,5 @@ public abstract class Card extends Entity {
         super(id, name);
     }
 
+    public abstract void use();
 }
