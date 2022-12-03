@@ -110,19 +110,4 @@ public abstract class Hero extends Entity {
     public void setGame(Game game) {
         this.game = game;
     }
-
-
-    public Camp getCamp() {
-        return camp;
-    }
-
-
-    public int getMaxHealth() {
-        return maxHealth;
-    }
-
-
-    public int getHealth() {
-        return health;
-    }
 }
