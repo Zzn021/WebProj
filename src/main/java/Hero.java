@@ -33,4 +33,19 @@ public class Hero extends Entity {
         this.maxHealth = maxHealth;
         this.health = maxHealth;
     }
+
+
+    public Camp getCamp() {
+        return camp;
+    }
+
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+
+    public int getHealth() {
+        return health;
+    }
 }
