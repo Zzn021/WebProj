@@ -15,4 +15,8 @@ public abstract class Area {
     public List<Card> getCards() {
         return new ArrayList<>(cards);
     }
+
+    public int getSize() {
+        return cards.size();
+    }
 }
