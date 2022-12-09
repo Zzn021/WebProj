@@ -1,6 +1,6 @@
-package main.java.card.commonCard;
+package main.java.LoCCP.card.commonCard;
 
-import main.java.card.Card;
+import main.java.LoCCP.card.Card;
 
 public abstract class CommonCard extends Card {
 

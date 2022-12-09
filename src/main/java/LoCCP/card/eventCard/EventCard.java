@@ -1,6 +1,6 @@
-package main.java.card.eventCard;
+package main.java.LoCCP.card.eventCard;
 
-import main.java.card.Card;
+import main.java.LoCCP.card.Card;
 
 public abstract class EventCard extends Card {
 

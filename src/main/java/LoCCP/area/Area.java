@@ -1,9 +1,9 @@
-package main.java.area;
+package main.java.LoCCP.area;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.card.Card;
+import main.java.LoCCP.card.Card;
 
 public abstract class Area {
     private List<Card> cards = new ArrayList<>();

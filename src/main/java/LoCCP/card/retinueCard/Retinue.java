@@ -1,6 +1,6 @@
-package main.java.card.retinueCard;
+package main.java.LoCCP.card.retinueCard;
 
-import main.java.card.Card;
+import main.java.LoCCP.card.Card;
 
 public abstract class Retinue extends Card {
 

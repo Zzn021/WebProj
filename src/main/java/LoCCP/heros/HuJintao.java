@@ -1,7 +1,7 @@
-package main.java.heros;
+package main.java.LoCCP.heros;
 
-import main.java.Game;
-import main.java.Hero;
+import main.java.LoCCP.Game;
+import main.java.LoCCP.Hero;
 
 public class HuJintao extends Hero {
     public HuJintao(int id, Game game) {

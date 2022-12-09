@@ -1,8 +1,8 @@
-package main.java;
+package main.java.LoCCP;
 
 import java.util.ArrayList;
 
-import main.java.card.Card;
+import main.java.LoCCP.card.Card;
 
 public class Game {
     private ArrayList<Hero> heros = new ArrayList<>();

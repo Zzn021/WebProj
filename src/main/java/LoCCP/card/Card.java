@@ -1,6 +1,6 @@
-package main.java.card;
+package main.java.LoCCP.card;
 
-import main.java.Entity;
+import main.java.LoCCP.Entity;
 
 public abstract class Card extends Entity {
     private String description;

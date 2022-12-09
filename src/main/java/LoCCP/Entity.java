@@ -1,4 +1,4 @@
-package main.java;
+package main.java.LoCCP;
 
 public abstract class Entity {
     private int id;

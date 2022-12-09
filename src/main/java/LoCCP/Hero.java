@@ -1,11 +1,13 @@
-package main.java;
+package main.java.LoCCP;
 
 import java.util.List;
 
-import main.java.area.EquipmentArea;
-import main.java.area.EventArea;
-import main.java.area.HandCardArea;
-import main.java.area.RetinueArea;
+import main.java.LoCCP.Game;
+import main.java.LoCCP.Entity;
+import main.java.LoCCP.area.EquipmentArea;
+import main.java.LoCCP.area.EventArea;
+import main.java.LoCCP.area.HandCardArea;
+import main.java.LoCCP.area.RetinueArea;
 
 
 public abstract class Hero extends Entity {
