@@ -22,6 +22,8 @@ public abstract class Hero extends Entity {
     private Camp camp;
     private int maxHealth;
     private int health;
+    private int aRange = 1;
+    private int dRange = 1;
 
     private EquipmentArea equipments;
     private EventArea events;

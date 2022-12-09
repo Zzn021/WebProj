@@ -7,6 +7,7 @@ import main.java.LoCCP.card.Card;
 public class Game {
     private ArrayList<Hero> heros = new ArrayList<>();
     private ArrayList<Card> cards = new ArrayList<>();
+    private Map map = new Map(this);
     
     public Game() {
         
@@ -16,11 +17,11 @@ public class Game {
         heros.add(hero);
     }
 
-    public ArrayList<Hero> getHero() {
+    public ArrayList<Hero> getHeros() {
         return heros;
     }
 
-    public ArrayList<Card> geCards() {
+    public ArrayList<Card> getCards() {
         return cards;
     }
 }

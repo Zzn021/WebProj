@@ -17,7 +17,7 @@ public class HuJintao extends Hero {
 
     public void ability() {
         if (this.abilityCondition()) {
-            for(Hero hero : getGame().getHero()) {
+            for(Hero hero : getGame().getHeros()) {
                 if (hero.getHealth() < hero.getMaxHealth()) {
                     hero.setHealth(hero.getHealth() + 1);
                 }
