@@ -21,7 +21,16 @@ public class Game {
         return heros;
     }
 
+    public boolean heroExist(Hero h) {
+        return heros.contains(h);
+    }
+
     public ArrayList<Card> getCards() {
         return cards;
     }
+
+    public Map getMap() {
+        return map;
+    }
+
 }

@@ -30,14 +30,11 @@ public abstract class Hero extends Entity {
     private HandCardArea handCards;
     private RetinueArea retinues;
 
-    private Game game;
-
     public Hero(int id, String name, Camp camp, int maxHealth, Game game) {
-        super(id, name);
+        super(id, name, game);
         this.camp = camp;
         this.maxHealth = maxHealth;
         this.health = maxHealth;
-        this.game = game;
     }
 
     public abstract boolean abilityCondition();
@@ -114,4 +111,13 @@ public abstract class Hero extends Entity {
     public void setGame(Game game) {
         this.game = game;
     }
+
+    public int getAttackRange() {
+        return aRange;
+    }
+
+    public int getDefenceRange() {
+        return dRange;
+    }
+
 }
