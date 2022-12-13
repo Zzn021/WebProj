@@ -1,4 +1,4 @@
-package exceptions;
+package LoCCP.exceptions;
 
 public class InvalidActionException extends Exception {
 
