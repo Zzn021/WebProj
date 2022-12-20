@@ -144,6 +144,11 @@ public abstract class Hero extends Entity {
     }
 
     public void react(Reaction reaction) throws InvalidActionException, InvalidEntityException {
-        reaction.react(inAction);
+        if (reaction == null) {
+            inAction.effective();
+        } else {
+            reaction.react(inAction);
+        }
+        inAction = null;
     }
 }

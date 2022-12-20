@@ -16,12 +16,12 @@ public class Attack extends CommonCard {
     @Override
     public void use(Hero from, Hero to) throws InvalidActionException, InvalidEntityException {
         bothExist(from, to);
+        setBoth(from, to);
         if (! getGame().getMap().inRange(from, to)) {
             throw new InvalidActionException(
                 "The attack target: {id: " + to.getIdString() + "} is not in range!"
             );
         }
         from.onAttacking(this);
-        to.onAttacked(this);
     }
 }

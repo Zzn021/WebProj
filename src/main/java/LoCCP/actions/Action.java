@@ -2,6 +2,7 @@ package LoCCP.actions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 import LoCCP.Hero;
 import LoCCP.actions.reactions.Reaction;
@@ -14,7 +15,15 @@ public class Action {
     private Hero to;
     private List<Reaction> availableReactions = new ArrayList<>();
     private Reaction reaction = null;
+    private Consumer<Hero> effectOnTarget;
 
+
+    public Action(Hero from, Hero to, List<Reaction> availableReactions, Consumer<Hero> effectOnTarget) {
+        this.from = from;
+        this.to = to;
+        this.availableReactions = availableReactions;
+        this.effectOnTarget = effectOnTarget;
+    }
 
     public Action(Hero from, Hero to, List<Reaction> availableReactions) {
         this.from = from;
@@ -44,6 +53,10 @@ public class Action {
 
     public boolean waitingReaction() {
         return reaction == null;
+    }
+
+    public void effective() {
+        effectOnTarget.accept(to);
     }
 
 }

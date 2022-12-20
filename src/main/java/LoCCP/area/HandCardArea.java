@@ -1,8 +1,5 @@
 package LoCCP.area;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import LoCCP.Game;
 import LoCCP.Hero;
 import LoCCP.card.Card;

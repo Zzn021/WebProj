@@ -57,5 +57,10 @@ public abstract class Card extends Entity {
         }
     }
 
+    public void setBoth(Hero from, Hero to) {
+        setUser(from);
+        setTarget(to);
+    }
+
     public abstract void use(Hero from, Hero to) throws InvalidActionException, InvalidEntityException;
 }
