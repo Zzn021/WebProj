@@ -1,14 +1,15 @@
 package LoCCP;
 
 import java.util.List;
-import java.util.function.Function;
 
-import LoCCP.actions.ActionResponse;
+import LoCCP.actions.Action;
+import LoCCP.actions.reactions.Reaction;
 import LoCCP.area.EquipmentArea;
 import LoCCP.area.EventArea;
 import LoCCP.area.HandCardArea;
 import LoCCP.area.RetinueArea;
 import LoCCP.card.Card;
+import LoCCP.card.commonCard.Attack;
 import LoCCP.exceptions.InvalidActionException;
 import LoCCP.exceptions.InvalidEntityException;
 import LoCCP.strategies.attack.DefaultOnAttacked;
@@ -30,17 +31,17 @@ public abstract class Hero extends Entity {
     private int maxHealth;
     private int health;
     private int aRange = 1;
-    private int dRange = 1;
+    private int dRange = 0;
 
-    private EquipmentArea equipments;
-    private EventArea events;
-    private HandCardArea handCards;
-    private RetinueArea retinues;
+    private EquipmentArea equipments = new EquipmentArea(getGame());
+    private EventArea events = new EventArea(getGame());
+    private HandCardArea handCards = new HandCardArea(getGame());
+    private RetinueArea retinues = new RetinueArea(getGame());
 
     protected onAttacked onAttackedStrategy = new DefaultOnAttacked(this);
-    protected onAttacking onAttackingStrategy = new DefaultOnAttacking();
+    protected onAttacking onAttackingStrategy = new DefaultOnAttacking(this);
 
-    Function<List<Card>,List<Card>> respondeCardFilter = null;
+    private Action inAction = null;
 
 
     public Hero(int id, String name, Camp camp, int maxHealth, Game game) {
@@ -118,31 +119,31 @@ public abstract class Hero extends Entity {
         return dRange;
     }
 
-    public void onAttacked() {
-        onAttackedStrategy.apply();
+    public void onAttacked(Attack attack) {
+        onAttackedStrategy.apply(attack);
     }
 
-    public void onAttacking() {
-        onAttackingStrategy.apply();
+    public void onAttacking(Attack attack) {
+        onAttackingStrategy.apply(attack);
     }
 
     public void useCard(Card card, Hero target) throws InvalidActionException, InvalidEntityException {
         handCards.useCard(card, this, target);
     }
 
-    public void setResponseCardFilter(Function<List<Card>, List<Card>> filter) {
-        this.respondeCardFilter = filter;
+    public void setInAction(Action inAction) {
+        this.inAction = inAction;
     }
 
-    public boolean isResponding() {
-        return this.respondeCardFilter != null;
+    public boolean waitingResponde() {
+        return inAction != null && inAction.waitingReaction();
     }
 
-    public void responde(ActionResponse response) {
-
+    public List<Reaction> getAvailableReaction() {
+        return inAction.getAvailableReactions();
     }
 
-    public void respondeWithCard(Card card) throws InvalidActionException, InvalidEntityException {
-        handCards.useCard(card, this, null);
+    public void react(Reaction reaction) throws InvalidActionException, InvalidEntityException {
+        reaction.react(inAction);
     }
 }

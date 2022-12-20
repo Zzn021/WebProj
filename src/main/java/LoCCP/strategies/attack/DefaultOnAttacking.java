@@ -1,11 +1,18 @@
 package LoCCP.strategies.attack;
 
-public class DefaultOnAttacking implements onAttacking {
+import LoCCP.Hero;
+import LoCCP.card.commonCard.Attack;
 
+public class DefaultOnAttacking implements onAttacking {
+    private Hero hero;
+
+    public DefaultOnAttacking(Hero hero) {
+        this.hero = hero;
+    }
 
     @Override
-    public void apply() {
-
+    public void apply(Attack attack) {
+        attack.setUser(hero);
     }
 
 }

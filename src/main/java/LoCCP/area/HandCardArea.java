@@ -16,9 +16,6 @@ public class HandCardArea extends Area {
     }
 
 
-    private List<Card> cards = new ArrayList<>();
-
-
     public void useCard(Card card, Hero from, Hero to) throws InvalidActionException, InvalidEntityException {
         if (!cards.contains(card)) {
             throw new InvalidActionException("The hero does not contain the Card: {id: " + card.getId() + "}!");

@@ -4,10 +4,9 @@ import LoCCP.exceptions.InvalidActionException;
 import LoCCP.exceptions.InvalidEntityException;
 import LoCCP.Game;
 import LoCCP.Hero;
-import LoCCP.actions.Action;
 
 //杀
-public class Attack extends CommonCard implements Action {
+public class Attack extends CommonCard {
 
     public Attack(int id, String name, Game game) {
         super(id, name, game);
@@ -22,7 +21,7 @@ public class Attack extends CommonCard implements Action {
                 "The attack target: {id: " + to.getIdString() + "} is not in range!"
             );
         }
-        from.onAttacking();
-        to.onAttacked();
+        from.onAttacking(this);
+        to.onAttacked(this);
     }
 }
