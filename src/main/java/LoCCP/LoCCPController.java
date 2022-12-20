@@ -1,4 +1,4 @@
-package main.java.LoCCP;
+package LoCCP;
 
 public class LoCCPController {
     private Game game = null;

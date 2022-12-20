@@ -1,13 +1,15 @@
-package main.java.LoCCP.card;
+package LoCCP.card;
 
-import exceptions.InvalidActionException;
-import exceptions.InvalidEntityException;
-import main.java.LoCCP.Entity;
-import main.java.LoCCP.Game;
-import main.java.LoCCP.Hero;
+import LoCCP.exceptions.InvalidActionException;
+import LoCCP.exceptions.InvalidEntityException;
+import LoCCP.Entity;
+import LoCCP.Game;
+import LoCCP.Hero;
+import LoCCP.area.Area;
 
 public abstract class Card extends Entity {
     private String description;
+    private Area area;
 
     public String getDescription() {
         return description;
@@ -15,6 +17,16 @@ public abstract class Card extends Entity {
 
     public Card(int id, String name, Game game) {
         super(id, name, game);
+        game.getCardPile().addCard(this);
+        setArea(game.getCardPile());
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
     }
 
     public void bothExist(Hero from, Hero to) throws InvalidEntityException {

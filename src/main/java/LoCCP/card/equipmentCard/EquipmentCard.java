@@ -1,7 +1,7 @@
-package main.java.LoCCP.card.equipmentCard;
+package LoCCP.card.equipmentCard;
 
-import main.java.LoCCP.Game;
-import main.java.LoCCP.card.Card;
+import LoCCP.Game;
+import LoCCP.card.Card;
 
 public abstract class EquipmentCard extends Card {
 

@@ -1,8 +1,6 @@
-package main.java.LoCCP;
+package LoCCP;
 
 import java.util.List;
-
-import exceptions.InvalidEntityException;
 
 public class Map {
     private Game game = null;

@@ -1,15 +1,14 @@
-package test.java.LoCCP.mvp;
+package LoCCP.mvp;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import main.java.LoCCP.Game;
-import main.java.LoCCP.heros.HuJintao;
-import main.java.LoCCP.heros.XiJinping;
+import LoCCP.Game;
+import LoCCP.heros.HuJintao;
+import LoCCP.heros.XiJinping;
 
 public class TestSimple {
     @Test

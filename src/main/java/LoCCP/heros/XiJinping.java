@@ -1,7 +1,7 @@
-package main.java.LoCCP.heros;
+package LoCCP.heros;
 
-import main.java.LoCCP.Game;
-import main.java.LoCCP.Hero;
+import LoCCP.Game;
+import LoCCP.Hero;
 
 public class XiJinping extends Hero {
     public XiJinping(int id, Game game) {
