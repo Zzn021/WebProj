@@ -17,7 +17,7 @@ public class CardPile extends Area {
         //TODO Auto-generated constructor stub
     }
 
-    public void giveCards(Hero receiver, int numCard) {
+    public void dealCards(Hero receiver, int numCard) {
         HandCardArea handCard = receiver.getHandCards();
         int idx = getSize() - 1;
         for (int i = 0; i < numCard; i++) {

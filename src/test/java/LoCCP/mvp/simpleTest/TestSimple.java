@@ -1,4 +1,4 @@
-package LoCCP.mvp;
+package LoCCP.mvp.simpleTest;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,9 +15,9 @@ public class TestSimple {
     @DisplayName("胡锦涛回血")
     public void HujintaoHeal() {
         Game game = new Game();
-        HuJintao hu = new HuJintao(0, game);
+        HuJintao hu = new HuJintao(game);
         game.addHero(hu);
-        XiJinping xi = new XiJinping(1, game);
+        XiJinping xi = new XiJinping(game);
         game.addHero(xi);
 
         assertEquals(hu.getMaxHealth(), hu.getHealth());

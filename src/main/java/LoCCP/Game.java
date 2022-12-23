@@ -12,6 +12,7 @@ public class Game {
     private Map map = new Map(this);
     private CardPile cardPile = new CardPile(this);
     private WasteCardPile wasteCards = new WasteCardPile(this);
+    private IDGenerator idGenerator = new IDGenerator();
 
     public Game() {
     }
@@ -42,6 +43,14 @@ public class Game {
 
     public WasteCardPile getWasteCards() {
         return wasteCards;
+    }
+
+    public boolean waitingResponde() {
+        return heros.stream().anyMatch(Hero::waitingResponde);
+    }
+
+    public String generateID() {
+        return idGenerator.newID();
     }
 
 }

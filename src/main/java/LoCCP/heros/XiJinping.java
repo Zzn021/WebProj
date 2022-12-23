@@ -4,8 +4,8 @@ import LoCCP.Game;
 import LoCCP.Hero;
 
 public class XiJinping extends Hero {
-    public XiJinping(int id, Game game) {
-        super(id, "Xi Jinping", Camp.XI, 5, game);
+    public XiJinping(Game game) {
+        super(Camp.XI, 5, game);
     }
 
     public boolean abilityCondition() {

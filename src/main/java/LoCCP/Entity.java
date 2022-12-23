@@ -1,8 +1,7 @@
 package LoCCP;
 
 public abstract class Entity {
-    private int id;
-    private String name;
+    private String id;
     private Game game;
 
     /**
@@ -10,22 +9,13 @@ public abstract class Entity {
      * @param id
      * @param name
      */
-    public Entity(int id, String name, Game game) {
-        this.id = id;
-        this.name = name;
+    public Entity(Game game) {
         this.game = game;
+        this.id = game.generateID();
     }
 
-    public int getId() {
+    public String getId() {
         return id;
-    }
-
-    public String getIdString() {
-        return Integer.toString(id);
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Game getGame() {

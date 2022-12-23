@@ -1,4 +1,4 @@
-package LoCCP.mvp;
+package LoCCP.mvp.simpleTest;
 
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -20,15 +20,15 @@ public class TestAttack {
     @DisplayName("Testing Attack Basic Function")
     public void TestBasicAttack() {
         Game game = new Game();
-        HuJintao hu = new HuJintao(0, game);
+        HuJintao hu = new HuJintao(game);
         game.addHero(hu);
-        XiJinping xi = new XiJinping(1, game);
+        XiJinping xi = new XiJinping(game);
         game.addHero(xi);
 
         int huHealth = hu.getHealth();
 
-        Attack attack = new Attack(101, "Attack", game);
-        Defence defence = new Defence(102, "Defence", game);
+        Attack attack = new Attack(game);
+        Defence defence = new Defence(game);
 
         hu.getHandCards().addCard(defence);
         xi.getHandCards().addCard(attack);

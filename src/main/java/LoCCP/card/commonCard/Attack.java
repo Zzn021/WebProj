@@ -8,9 +8,8 @@ import LoCCP.Hero;
 //杀
 public class Attack extends CommonCard {
 
-    public Attack(int id, String name, Game game) {
-        super(id, name, game);
-        //TODO Auto-generated constructor stub
+    public Attack(Game game) {
+        super(game);
     }
 
     @Override
@@ -19,7 +18,7 @@ public class Attack extends CommonCard {
         setBoth(from, to);
         if (! getGame().getMap().inRange(from, to)) {
             throw new InvalidActionException(
-                "The attack target: {id: " + to.getIdString() + "} is not in range!"
+                "The attack target: {id: " + to.getId() + "} is not in range!"
             );
         }
         from.onAttacking(this);

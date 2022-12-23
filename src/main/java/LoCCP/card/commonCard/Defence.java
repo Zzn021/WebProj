@@ -9,15 +9,13 @@ import LoCCP.exceptions.InvalidEntityException;
 
 public class Defence extends CommonCard implements CardReaction {
 
-    public Defence(int id, String name, Game game) {
-        super(id, name, game);
-        //TODO Auto-generated constructor stub
+    public Defence(Game game) {
+        super(game);
     }
 
     @Override
     public void use(Hero from, Hero to) throws InvalidActionException, InvalidEntityException {
-        // TODO Auto-generated method stub
-
+        bothExist(from, to);
     }
 
     @Override

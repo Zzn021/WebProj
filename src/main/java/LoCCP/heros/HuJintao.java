@@ -4,14 +4,14 @@ import LoCCP.Game;
 import LoCCP.Hero;
 
 public class HuJintao extends Hero {
-    public HuJintao(int id, Game game) {
-        super(id, "Hu Jintao", Camp.TUAN, 3, game);
+    public HuJintao(Game game) {
+        super(Camp.TUAN, 3, game);
     }
 
     public boolean abilityCondition() {
         if (getHealth() == 2) {
             return true;
-        } 
+        }
         return false;
     }
 

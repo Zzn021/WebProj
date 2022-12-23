@@ -5,10 +5,8 @@ import LoCCP.card.Card;
 
 public abstract class EventCard extends Card {
 
-    public EventCard(int id, String name, Game game) {
-        super(id, name, game);
-        //TODO Auto-generated constructor stub
+    public EventCard(Game game) {
+        super(game);
     }
-    
     
 }

@@ -16,6 +16,8 @@ import LoCCP.strategies.attack.DefaultOnAttacked;
 import LoCCP.strategies.attack.DefaultOnAttacking;
 import LoCCP.strategies.attack.onAttacked;
 import LoCCP.strategies.attack.onAttacking;
+import LoCCP.strategies.heal.DefaultOnHeal;
+import LoCCP.strategies.heal.onHeal;
 
 
 public abstract class Hero extends Entity {
@@ -40,12 +42,13 @@ public abstract class Hero extends Entity {
 
     protected onAttacked onAttackedStrategy = new DefaultOnAttacked(this);
     protected onAttacking onAttackingStrategy = new DefaultOnAttacking(this);
+    protected onHeal onHealStrategy = new DefaultOnHeal(this);
 
     private Action inAction = null;
 
 
-    public Hero(int id, String name, Camp camp, int maxHealth, Game game) {
-        super(id, name, game);
+    public Hero(Camp camp, int maxHealth, Game game) {
+        super(game);
         this.camp = camp;
         this.maxHealth = maxHealth;
         this.health = maxHealth;
@@ -58,24 +61,21 @@ public abstract class Hero extends Entity {
         return camp;
     }
 
-
     public int getMaxHealth() {
         return maxHealth;
     }
-
-
-    public void setMaxHealth(int maxHealth) {
-        this.maxHealth = maxHealth;
-    }
-
 
     public int getHealth() {
         return health;
     }
 
-
+    /**
+     * Setter for Hero's health.
+     * If the health is greater than maxHealth then set to maxHealth.
+     * @param health <= maxHealth
+     */
     public void setHealth(int health) {
-        this.health = health;
+        this.health = Math.min(health, maxHealth);
     }
 
 
@@ -83,21 +83,9 @@ public abstract class Hero extends Entity {
         return equipments;
     }
 
-
-    public void setEquipments(EquipmentArea equipments) {
-        this.equipments = equipments;
-    }
-
-
     public EventArea getEvents() {
         return events;
     }
-
-
-    public void setEvents(EventArea events) {
-        this.events = events;
-    }
-
 
     public HandCardArea getHandCards() {
         return handCards;
@@ -105,10 +93,6 @@ public abstract class Hero extends Entity {
 
     public RetinueArea getRetinues() {
         return retinues;
-    }
-
-    public void setRetinues(RetinueArea retinues) {
-        this.retinues = retinues;
     }
 
     public int getAttackRange() {
@@ -127,10 +111,18 @@ public abstract class Hero extends Entity {
         onAttackingStrategy.apply(attack);
     }
 
+    public void onHeal(Hero from) {
+        onHealStrategy.apply(from);
+    }
+
     public void useCard(Card card, Hero target) throws InvalidActionException, InvalidEntityException {
         handCards.useCard(card, this, target);
     }
 
+    /**
+     * Set the Hero in the given action, the Hero will then be in responding state until a reaction is given.
+     * @param inAction
+     */
     public void setInAction(Action inAction) {
         this.inAction = inAction;
     }

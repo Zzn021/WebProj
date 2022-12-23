@@ -17,8 +17,8 @@ public abstract class Card extends Entity {
         return description;
     }
 
-    public Card(int id, String name, Game game) {
-        super(id, name, game);
+    public Card(Game game) {
+        super(game);
         game.getCardPile().addCard(this);
         setArea(game.getCardPile());
     }
@@ -50,10 +50,10 @@ public abstract class Card extends Entity {
     public void bothExist(Hero from, Hero to) throws InvalidEntityException {
         Game game = getGame();
         if (! game.heroExist(from)) {
-            throw new InvalidEntityException("Invalid Hero: {id: " + from.getIdString() + "}!");
+            throw new InvalidEntityException("Invalid Hero: {id: " + from.getId() + "}!");
         }
         if (! game.heroExist(to)) {
-            throw new InvalidEntityException("Invalid Hero: {id: " + to.getIdString() + "}!");
+            throw new InvalidEntityException("Invalid Hero: {id: " + to.getId() + "}!");
         }
     }
 
