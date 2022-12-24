@@ -12,8 +12,8 @@ import LoCCP.Game;
 import LoCCP.card.commonCard.Attack;
 import LoCCP.card.commonCard.Heal;
 import LoCCP.exceptions.InvalidActionException;
-import LoCCP.heros.HuJintao;
-import LoCCP.heros.XiJinping;
+import LoCCP.heros.hujintao.HuJintao;
+import LoCCP.heros.xijinping.XiJinping;
 
 public class TestHeal {
     @Test

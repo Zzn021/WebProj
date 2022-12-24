@@ -1,7 +1,11 @@
 package LoCCP;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import LoCCP.ability.Ability;
+import LoCCP.ability.AbilityInfo;
 import LoCCP.actions.Action;
 import LoCCP.actions.reactions.Reaction;
 import LoCCP.area.EquipmentArea;
@@ -12,6 +16,9 @@ import LoCCP.card.Card;
 import LoCCP.card.commonCard.Attack;
 import LoCCP.exceptions.InvalidActionException;
 import LoCCP.exceptions.InvalidEntityException;
+import LoCCP.exceptions.InvalidInputException;
+import LoCCP.strategies.ability.DefaultOnAbilityTarget;
+import LoCCP.strategies.ability.onAbilityTarget;
 import LoCCP.strategies.attack.DefaultOnAttacked;
 import LoCCP.strategies.attack.DefaultOnAttacking;
 import LoCCP.strategies.attack.onAttacked;
@@ -43,6 +50,9 @@ public abstract class Hero extends Entity {
     protected onAttacked onAttackedStrategy = new DefaultOnAttacked(this);
     protected onAttacking onAttackingStrategy = new DefaultOnAttacking(this);
     protected onHeal onHealStrategy = new DefaultOnHeal(this);
+    protected onAbilityTarget onAbilityTargetStrategy = new DefaultOnAbilityTarget();
+
+    protected List<Ability> abilities = new ArrayList<>();
 
     private Action inAction = null;
 
@@ -53,9 +63,6 @@ public abstract class Hero extends Entity {
         this.maxHealth = maxHealth;
         this.health = maxHealth;
     }
-
-    public abstract boolean abilityCondition();
-    public abstract void ability();
 
     public Camp getCamp() {
         return camp;
@@ -77,7 +84,6 @@ public abstract class Hero extends Entity {
     public void setHealth(int health) {
         this.health = Math.min(health, maxHealth);
     }
-
 
     public EquipmentArea getEquipments() {
         return equipments;
@@ -115,6 +121,10 @@ public abstract class Hero extends Entity {
         onHealStrategy.apply(from);
     }
 
+    public void onAbilityTarget(Ability ability) {
+        onAbilityTargetStrategy.apply(ability);
+    }
+
     public void useCard(Card card, Hero target) throws InvalidActionException, InvalidEntityException {
         handCards.useCard(card, this, target);
     }
@@ -142,5 +152,16 @@ public abstract class Hero extends Entity {
             reaction.react(inAction);
         }
         inAction = null;
+    }
+
+    public List<Ability> usableAbilities() {
+        return abilities.stream().filter(a -> a.usable()).collect(Collectors.toList());
+    }
+
+    public void useAbility(Ability ability, AbilityInfo info) throws InvalidInputException, InvalidEntityException {
+        if (!this.abilities.contains(ability)) {
+            throw new InvalidInputException("The choosen ability is currently not usable!");
+        }
+        ability.use(info);
     }
 }

@@ -1,5 +1,7 @@
 package LoCCP.area;
 
+import java.util.ArrayList;
+
 import LoCCP.Game;
 import LoCCP.Hero;
 import LoCCP.card.Card;
@@ -21,5 +23,10 @@ public class HandCardArea extends Area {
         cards.remove(card);
 
         getGame().getWasteCards().addCard(card);
+    }
+
+    public void discardAll() {
+        getGame().getWasteCards().addCard(cards);
+        cards = new ArrayList<>();
     }
 }

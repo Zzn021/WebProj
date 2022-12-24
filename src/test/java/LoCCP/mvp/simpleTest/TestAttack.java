@@ -12,13 +12,13 @@ import org.junit.jupiter.api.Test;
 import LoCCP.Game;
 import LoCCP.card.commonCard.Attack;
 import LoCCP.card.commonCard.Defence;
-import LoCCP.heros.HuJintao;
-import LoCCP.heros.XiJinping;
+import LoCCP.heros.hujintao.HuJintao;
+import LoCCP.heros.xijinping.XiJinping;
 
 public class TestAttack {
     @Test
     @DisplayName("Testing Attack Basic Function")
-    public void TestBasicAttack() {
+    public void testBasicAttack() {
         Game game = new Game();
         HuJintao hu = new HuJintao(game);
         game.addHero(hu);
